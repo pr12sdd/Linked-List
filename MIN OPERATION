@@ -1,0 +1,4 @@
+In This question there will be three cases possible-------
+1. If a and b are equal then 0 operation is required.
+2. If (a&b)==a || (a&b)==b then 1 operation is required.
+3. Else 2 operation is required.
