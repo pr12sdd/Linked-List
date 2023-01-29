@@ -1,0 +1,61 @@
+struct Node* reverse(struct Node *head)
+{
+    struct Node *p=head->next;
+    struct Node *q=head;
+    struct Node *r=NULL;
+    while(p!=NULL)
+    {
+        q->next=r;
+        r=q;
+        q=p;
+        p=p->next;
+    }
+    q->next=r;
+    
+    return q;
+}
+struct Node * mergeResult(Node *node1,Node *node2)
+{
+    struct Node *head1=reverse(node1);
+    struct Node *head2=reverse(node2);
+    struct Node *first=NULL;
+    struct Node *head=NULL;
+    while(head1!=NULL && head2!=NULL)
+    {
+        if(head1->data>head2->data)
+        {   if(first==NULL && head==NULL)
+            {first=head=head1;
+             head1=head1->next;    
+            }
+            else
+            {
+                first->next=head1;
+                first=head1;
+                head1=head1->next;
+            }
+        }
+        else
+        {
+            if(first==NULL && head==NULL)
+            {first=head=head2;
+             head2=head2->next;        
+            }
+            else
+            {
+                first->next=head2;
+                first=head2;
+                head2=head2->next;
+            }
+        }
+    }
+    if(head1==NULL)
+    {
+        first->next=head2;
+    }
+    else
+    {
+        first->next=head1;
+    }
+    
+    return head;
+}
