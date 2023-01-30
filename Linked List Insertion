@@ -1,0 +1,28 @@
+ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ Node *insertAtBegining(Node *head, int x) {
+       struct Node *p;
+       p=(struct Node *)malloc(sizeof(struct Node));
+       p->data=x;
+       p->next=head;
+       head=p;
+       return head;
+    }
+ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+     Node *insertAtEnd(Node *head, int x)  {
+       struct Node *p;
+       p=(struct Node *)malloc(sizeof(struct Node));
+       p->data=x;
+       p->next=NULL;
+       if(head==NULL)
+       {
+           head=p;
+           return head;
+       }
+       struct Node *last=head;
+       while(last->next!=NULL)
+       {
+           last=last->next;
+       }
+       last->next=p;
+       return head;
+    }
