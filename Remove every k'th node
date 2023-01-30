@@ -1,0 +1,22 @@
+Node* deleteK(Node *head,int K)
+{    if(K==1)
+     {
+         return NULL;
+     }
+     struct Node *p=head;
+     struct Node *q=NULL;
+     while(p!=NULL)
+     {
+         int n=K;
+         while(p!=NULL && n!=1)
+         {
+             q=p;
+             p=p->next;
+             n--;
+         }
+         if(p!=NULL)
+         {q->next=p->next;
+         p=p->next;}
+     }
+     return head;
+}
