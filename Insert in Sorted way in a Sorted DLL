@@ -1,0 +1,33 @@
+Node* sortedInsert(Node * head, int x)
+{   
+    struct Node* t;
+    t=(struct Node *)malloc(sizeof(struct Node));
+    t->data=x;
+    t->next=NULL;
+    t->prev=NULL;
+	struct Node *p=head;
+	if(x<p->data)
+	{
+	    t->next=head;
+	    head->prev=t;
+	    head=t;
+	    
+	    return head;
+	}
+	
+	while(p->next!=NULL && p->next->data<x)
+	{
+	 p=p->next;
+	}
+    if(p->next!=NULL)
+	{t->next=p->next;
+	t->prev=p;
+	p->next->prev=t;  
+	p->next=t;  }
+	else
+	{
+	    t->prev=p;
+	    p->next=t;
+	}
+     return head;
+}
