@@ -1,0 +1,26 @@
+struct Node* isLoop(Node *head)
+    {
+        struct Node *fast=head;
+        struct Node *slow=head;
+          do{
+            fast=fast->next->next;
+            slow=slow->next;
+          }while(fast!=NULL && fast!=slow);
+          
+        return fast;
+    }
+    int findFirstNode(Node* head)
+    {   
+        struct Node *q=isLoop(head);
+        if(q==NULL)
+        {
+            return -1;
+        }
+        struct Node *p=head;
+        while(p!=q)
+        {
+            p=p->next;
+            q=q->next;
+        }
+        return p->data;
+    }
