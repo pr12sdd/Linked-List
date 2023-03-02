@@ -1,0 +1,27 @@
+Node * removeDuplicates( Node *head) 
+    {
+       unordered_set<int> m;
+       struct Node *p=head;
+       while(p!=0)
+       {
+           m.insert(p->data);
+           p=p->next;
+       }
+       p=head;
+       struct Node *q=NULL;
+       while(p!=NULL)
+       {
+           if(m.find(p->data)!=m.end())
+           {   m.erase(p->data);
+               q=p;
+               p=p->next;
+               
+           }
+           else
+           {
+               q->next=p->next;
+               p=q->next;
+           }
+       }
+       return head;
+    }
